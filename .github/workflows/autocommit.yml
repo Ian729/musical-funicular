@@ -22,7 +22,7 @@ jobs:
       - name: curl
         uses: enflo/curl-action@master
         with:
-          curl: "https://bj.lianjia.com/ershoufang/"
+          curl: "https://bj.lianjia.com/ershoufang/ -o index.html" 
       - name: extract
         run: |
           cat index.html | grep "count: " >> LAST_UPDATED
