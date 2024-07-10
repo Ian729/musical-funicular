@@ -25,7 +25,7 @@ jobs:
           curl: "https://bj.lianjia.com/ershoufang/ -o index.html" 
       - name: extract
         run: |
-          cat index.html | grep "count: " >> LAST_UPDATED
+          cat ./index.html | grep "count: " | grep -Eo "\d+" >> LAST_UPDATED
       - name: Commit changes
         run: |
           git config --local user.email "438410248@qq.com"
