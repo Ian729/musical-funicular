@@ -16,11 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Modify last update
+        working-directory: musical-fuunicular
         run: |
           d=`date '+%Y-%m-%dT%H:%M:%SZ'`
           echo $d >> LAST_UPDATED
           wget https://bj.lianjia.com/ershoufang/ && cat index.html | grep "count:" | grep -Eo "\d+" >> LAST_UPDATED
-          
       - name: Commit changes
         run: |
           git config --local user.email "438410248@qq.com"
