@@ -28,7 +28,7 @@ jobs:
           cat ./index.html | grep "count: " >> LAST_UPDATED
       - name: plot
         run: |
-          pip install pandas matplotlib
+          pip install pandas matplotlib scipy
           python plot.py
       - name: Commit changes
         run: |
