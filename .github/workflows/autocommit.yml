@@ -12,17 +12,15 @@ on:
 jobs:
   auto_commit:
     runs-on: ubuntu-latest
-
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - name: Modify last update
         run: |
           d=`date '+%Y-%m-%dT%H:%M:%SZ'`
           echo $d >> LAST_UPDATED
-      - name: wget
-        uses: wei/wget@v1
-        with:
-          args: -O index.html https://bj.lianjia.com/ershoufang/
+      - name: curl
+        run: curl https://bj.lianjia.com/ershoufang/ -o index.html
       - name: extract
         run: |
           cat ./index.html | grep "count: " >> LAST_UPDATED
