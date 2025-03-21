@@ -12,7 +12,7 @@ on:
 jobs:
   auto_commit:
     runs-on: ubuntu-latest
-    continue-on-error: true
+
     steps:
       - uses: actions/checkout@v4
       - name: Modify last update
@@ -21,6 +21,7 @@ jobs:
           echo $d >> LAST_UPDATED
       - name: curl
         run: curl https://bj.lianjia.com/ershoufang/ -o index.html
+        continue-on-error: true
       - name: extract
         run: |
           cat ./index.html | grep "count: " >> LAST_UPDATED
